@@ -131,6 +131,42 @@ Se deseja que eu gere alguma das melhorias opcionais (README mais detalhado com 
 - D: Criar API C# (ASP.NET Core) para sincronização CRUD
 - E: Gerar pipeline CI (GitHub Actions) que roda `./gradlew check`
 
+## Nova tela de Login
+
+Adicionei uma tela inicial de login em Jetpack Compose (`LoginActivity`) que se torna a activity inicial (LAUNCHER). Características:
+
+- Mostra a logomarca (placeholder usando `@mipmap/ic_launcher`); substitua por `res/drawable/logo_vinheria.png` se preferir.
+- Exibe o título "controle de estoque".
+- Campos de `Login` e `Senha` e botão `Entrar`.
+- Validação simples: ambos os campos devem ser preenchidos; caso contrário, mostra uma mensagem de erro.
+- Ao logar com sucesso (validação), navega para a `MainActivity`.
+
+Como trocar a logomarca
+
+1. Coloque o arquivo de imagem (`PNG` ou `WEBP`) em `app/src/main/res/drawable/` com o nome `logo_vinheria.png`.
+2. Edite `LoginActivity.kt` e substitua `R.mipmap.ic_launcher` por `R.drawable.logo_vinheria`.
+
+## Como enviar para o GitHub (HTTPS)
+
+Se já tem o `remote` configurado (verificado como `https://github.com/MatheusCompass/vinheira_agnello_f4.git`), basta os passos abaixo (PowerShell):
+
+```powershell
+# 1) inicializar repo local (se ainda não feito)
+git init
+
+# 2) adicionar arquivos e commitar
+git add .
+git commit -m "Implement login screen + Room persistence module"
+
+# 3) adicionar remote (se não existir)
+git remote add origin https://github.com/MatheusCompass/vinheira_agnello_f4.git
+
+# 4) push para branch master (ou main). Se o remote exigir uma branch diferente, use a branch padrão do repositório remoto.
+git push -u origin master
+```
+
+Se o repositório remoto exigir autenticação via token, durante o push o Git pedirá suas credenciais — use username `MatheusCompass` e o token pessoal como senha. Se quiser, posso gerar instruções para configurar SSH ou o GitHub CLI.
+
 ---
 
 *Última atualização:* README gerado e validado no repositório. Boa sorte na entrega!
