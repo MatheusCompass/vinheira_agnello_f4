@@ -54,7 +54,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
     ) {
         // Logo - using mipmap/ic_launcher as placeholder
         Image(
-            painter = painterResource(id = R.mipmap.ic_launcher),
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
             contentDescription = "Vinheria Agnello logo",
             modifier = Modifier.size(120.dp)
         )

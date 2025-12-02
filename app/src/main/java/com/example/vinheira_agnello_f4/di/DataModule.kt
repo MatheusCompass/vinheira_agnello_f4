@@ -17,7 +17,8 @@ object DataModule {
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): VinheriaDatabase {
-        return VinheriaDatabase.getInstance(context)
+        val scope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.IO)
+        return VinheriaDatabase.getInstance(context, scope)
     }
 
     @Provides
