@@ -13,14 +13,23 @@ class Program
             // Dados iniciais se vazio
             if (!db.Produtos.Any())
             {
-                db.Produtos.Add(new Produto {
-                    Nome = "Vinho Tinto",
-                    Preco = 50,
-                    Quantidade = 10,
-                    Descricao = "Vinho suave da casa"
-                });
+                var vinhos = new List<Produto>
+                {
+                    new Produto { Nome = "Château Ausone Saint-Émilion", Preco = 1850.00, Quantidade = 12, Descricao = "Elegância e complexidade em cada gole. Uva: Merlot. Ano: 2018." },
+                    new Produto { Nome = "Barolo Brunate Michele Chiarlo", Preco = 420.00, Quantidade = 8, Descricao = "O rei dos vinhos italianos. Uva: Nebbiolo. Ano: 2017." },
+                    new Produto { Nome = "Chablis Premier Cru Montmains", Preco = 180.00, Quantidade = 15, Descricao = "Mineralidade única de Chablis. Uva: Chardonnay. Ano: 2020." },
+                    new Produto { Nome = "Dom Pérignon Vintage", Preco = 950.00, Quantidade = 6, Descricao = "O champagne dos sonhos. Uva: Chardonnay. Ano: 2013." },
+                    new Produto { Nome = "Quinta do Vale Meão", Preco = 280.00, Quantidade = 20, Descricao = "Tradição portuguesa premium. Uva: Touriga Nacional. Ano: 2019." },
+                    new Produto { Nome = "Catena Zapata Malbec", Preco = 150.00, Quantidade = 25, Descricao = "Intensidade argentina autêntica. Uva: Malbec. Ano: 2020." },
+                    new Produto { Nome = "Miolo Lote 43 Pinot Noir", Preco = 85.00, Quantidade = 30, Descricao = "Elegância brasileira da Serra Gaúcha. Uva: Pinot Noir. Ano: 2021." },
+                    new Produto { Nome = "Whispering Angel Rosé", Preco = 120.00, Quantidade = 18, Descricao = "Frescor provençal incomparável. Uva: Grenache. Ano: 2022." },
+                    new Produto { Nome = "Riesling Kabinett Dr. Loosen", Preco = 95.00, Quantidade = 22, Descricao = "Doçura equilibrada alemã. Uva: Riesling. Ano: 2021." },
+                    new Produto { Nome = "Almaviva Premium", Preco = 380.00, Quantidade = 10, Descricao = "Joint venture franco-chilena. Uva: Cabernet Sauvignon. Ano: 2018." }
+                };
+
+                db.Produtos.AddRange(vinhos);
                 db.SaveChanges();
-                Console.WriteLine("✓ Dados iniciais inseridos!\n");
+                Console.WriteLine("✓ Dados de vinhos inseridos com sucesso!\n");
             }
         }
 
