@@ -11,6 +11,9 @@ interface ProdutoDao {
     @Query("SELECT * FROM produtos WHERE id = :id LIMIT 1")
     suspend fun getById(id: Long): Produto?
 
+    @Query("SELECT COUNT(*) FROM produtos")
+    suspend fun getCount(): Int
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(produto: Produto): Long
 

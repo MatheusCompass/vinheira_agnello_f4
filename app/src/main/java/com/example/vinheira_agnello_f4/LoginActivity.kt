@@ -28,7 +28,6 @@ class LoginActivity : ComponentActivity() {
             Vinheira_agnello_f4Theme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     LoginScreen(onLoginSuccess = {
-                        // Launch MainActivity
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -52,28 +51,43 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Logo - using mipmap/ic_launcher as placeholder
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.logo_vinheria),
             contentDescription = "Vinheria Agnello logo",
-            modifier = Modifier.size(120.dp)
+            modifier = Modifier.size(80.dp)
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
-        Text(text = "controle de estoque", style = MaterialTheme.typography.titleLarge, fontSize = 20.sp)
+        Text(
+            text = "CONTROLE DE ESTOQUE",
+            style = MaterialTheme.typography.headlineSmall.copy(
+                fontSize = 20.sp,
+                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+            ),
+            color = MaterialTheme.colorScheme.onBackground
+        )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
             label = { Text("Login") },
             singleLine = true,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                focusedBorderColor = MaterialTheme.colorScheme.secondary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.onBackground,
+                focusedLabelColor = MaterialTheme.colorScheme.onBackground,
+                unfocusedLabelColor = MaterialTheme.colorScheme.onBackground,
+                cursorColor = MaterialTheme.colorScheme.secondary
+            ),
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = password,
@@ -82,6 +96,15 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                focusedBorderColor = MaterialTheme.colorScheme.secondary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.onBackground,
+                focusedLabelColor = MaterialTheme.colorScheme.onBackground,
+                unfocusedLabelColor = MaterialTheme.colorScheme.onBackground,
+                cursorColor = MaterialTheme.colorScheme.secondary
+            ),
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -102,11 +125,18 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
                     onLoginSuccess()
                 }
             },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondary,
+                contentColor = MaterialTheme.colorScheme.onSecondary
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp)
         ) {
-            Text("Entrar")
+            Text(
+                text = "Entrar",
+                style = MaterialTheme.typography.labelLarge
+            )
         }
     }
 }
